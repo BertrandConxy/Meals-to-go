@@ -17,6 +17,8 @@ const RestaurantInfo = ({ restaurant = {} }) => {
     isClosedTemporarily = true,
   } = restaurant
 
+  const ratingArray = Array.from(new Array(Math.floor(rating)))
+
   const CardListView = styled.View`
       marginTop: ${(props) => props.theme.space[3]};
       flex: 1;
@@ -38,7 +40,11 @@ const RestaurantInfo = ({ restaurant = {} }) => {
         <Card.Cover source={{ uri: photos[0] }} />
         <Card.Content>
           <TitleText>{name}</TitleText>
-          <SvgXml xml={star} width={20} height={20} />
+          {rating && (
+            <ParagraphText>
+              {ratingArray.map(() => <SvgXml xml={star} width={20} height={20} />)}
+            </ParagraphText>
+          )}
           <ParagraphText>{address}</ParagraphText>
         </Card.Content>
       </Card>
