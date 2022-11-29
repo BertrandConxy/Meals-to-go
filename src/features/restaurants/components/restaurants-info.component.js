@@ -1,6 +1,8 @@
 import styled from 'styled-components/native';
 import { Card, Title, Paragraph } from 'react-native-paper'
 import React from 'react'
+import { SvgXml } from 'react-native-svg'
+import star from '../../../../assets/star'
 
 const RestaurantInfo = ({ restaurant = {} }) => {
   const {
@@ -32,10 +34,11 @@ const RestaurantInfo = ({ restaurant = {} }) => {
 
   return (
     <CardListView>
-      <Card elevation={5} mode='contained' >
+      <Card elevation={2} mode='elevated' >
         <Card.Cover source={{ uri: photos[0] }} />
         <Card.Content>
           <TitleText>{name}</TitleText>
+          <SvgXml xml={star} width={20} height={20} />
           <ParagraphText>{address}</ParagraphText>
         </Card.Content>
       </Card>
