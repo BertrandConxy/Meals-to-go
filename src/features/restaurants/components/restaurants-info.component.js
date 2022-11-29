@@ -1,8 +1,9 @@
-import styled from 'styled-components/native';
+import styled from 'styled-components/native'
 import { Card, Title, Paragraph } from 'react-native-paper'
 import React from 'react'
 import { SvgXml } from 'react-native-svg'
 import star from '../../../../assets/star'
+import open from '../../../../assets/open'
 
 const RestaurantInfo = ({ restaurant = {} }) => {
   const {
@@ -20,31 +21,49 @@ const RestaurantInfo = ({ restaurant = {} }) => {
   const ratingArray = Array.from(new Array(Math.floor(rating)))
 
   const CardListView = styled.View`
-      marginTop: ${(props) => props.theme.space[3]};
-      flex: 1;
-      flex-grow: 1;
-    `;
+    margin-top: ${(props) => props.theme.space[3]};
+    flex: 1;
+    flex-grow: 1;
+  `
 
   const TitleText = styled(Title)`
-      paddingTop: ${(props) => props.theme.space[3]};
-      font-family: ${(props) => props.theme.fonts.heading};
-    `;
+    padding-top: ${(props) => props.theme.space[3]};
+    font-family: ${(props) => props.theme.fonts.heading};
+  `
   const ParagraphText = styled(Paragraph)`
-      font-family: ${(props) => props.theme.fonts.body};
-      font-size: ${(props) => props.theme.fontSizes.caption};
-    `;
+    font-family: ${(props) => props.theme.fonts.body};
+    font-size: ${(props) => props.theme.fontSizes.caption};
+  `
+
+  const RatingContainer = styled.View`
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: ${(props) => props.theme.space[2]};
+    padding-bottom: ${(props) => props.theme.space[2]};
+  `
+
+  const SvgContainer = styled.View`
+    flex-direction: row;
+  `
 
   return (
     <CardListView>
-      <Card elevation={2} mode='elevated' >
+      <Card elevation={2} mode="elevated">
         <Card.Cover source={{ uri: photos[0] }} />
         <Card.Content>
           <TitleText>{name}</TitleText>
-          {rating && (
-            <ParagraphText>
-              {ratingArray.map(() => <SvgXml xml={star} width={20} height={20} />)}
-            </ParagraphText>
-          )}
+          <RatingContainer>
+            {rating && (
+              <SvgContainer>
+                {ratingArray.map((i, index) => (
+                  <SvgXml xml={star} key={index} width={20} height={20} />
+                ))}
+              </SvgContainer>
+            )}
+            <SvgXml xml={open} width={20} height={20} />
+          </RatingContainer>
           <ParagraphText>{address}</ParagraphText>
         </Card.Content>
       </Card>
@@ -53,4 +72,3 @@ const RestaurantInfo = ({ restaurant = {} }) => {
 }
 
 export default RestaurantInfo
-
