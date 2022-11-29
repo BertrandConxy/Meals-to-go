@@ -1,15 +1,21 @@
-import { StyleSheet, View } from 'react-native'
 import React, { useState } from 'react'
 import { Searchbar } from 'react-native-paper'
 import RestaurantInfo from '../components/restaurants-info.component'
+import styled from 'styled-components/native'
 
 const RestaurantScreen = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const handleChange = (query) => {
     setSearchQuery(query)
   }
+
+  const RestaurantScreenView = styled.View`
+    flex: 1;
+    background-color: white;
+  `;
+
   return (
-    <View style={styles.container}>
+    <RestaurantScreenView>
       <Searchbar
         placeholder="Search query"
         onChangeText={handleChange}
@@ -17,15 +23,8 @@ const RestaurantScreen = () => {
         value={searchQuery}
       />
       <RestaurantInfo />
-    </View>
+    </RestaurantScreenView>
   )
 }
 
 export default RestaurantScreen
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-})

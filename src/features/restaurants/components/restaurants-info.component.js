@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native'
+import styled from 'styled-components/native';
 import { Card, Title, Paragraph } from 'react-native-paper'
 import React from 'react'
 
@@ -15,26 +15,25 @@ const RestaurantInfo = ({ restaurant = {} }) => {
     isClosedTemporarily = true,
   } = restaurant
 
+  const CardListView = styled.View`
+      padding: 16px;
+      flex: 1;
+      flex-grow: 1;
+      marginTop: 10px;
+    `;
+
   return (
-    <View style={styles.listContainer}>
-      <Card elevation={5} >
+    <CardListView>
+      <Card elevation={5} mode='contained' >
         <Card.Cover source={{ uri: photos[0] }} />
         <Card.Content>
           <Title>{name}</Title>
           <Paragraph>Card content</Paragraph>
         </Card.Content>
       </Card>
-    </View>
+    </CardListView>
   )
 }
 
 export default RestaurantInfo
 
-const styles = StyleSheet.create({
-  listContainer: {
-    padding: 5,
-    flex: 1,
-    flexGrow: 1,
-    marginTop: 10,
-  },
-})
