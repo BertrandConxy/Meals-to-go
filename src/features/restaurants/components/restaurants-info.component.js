@@ -16,10 +16,18 @@ const RestaurantInfo = ({ restaurant = {} }) => {
   } = restaurant
 
   const CardListView = styled.View`
-      padding: 16px;
+      marginTop: ${(props) => props.theme.space[3]};
       flex: 1;
       flex-grow: 1;
-      marginTop: 10px;
+    `;
+
+  const TitleText = styled(Title)`
+      paddingTop: ${(props) => props.theme.space[3]};
+      font-family: ${(props) => props.theme.fonts.heading};
+    `;
+  const ParagraphText = styled(Paragraph)`
+      font-family: ${(props) => props.theme.fonts.body};
+      font-size: ${(props) => props.theme.fontSizes.caption};
     `;
 
   return (
@@ -27,8 +35,8 @@ const RestaurantInfo = ({ restaurant = {} }) => {
       <Card elevation={5} mode='contained' >
         <Card.Cover source={{ uri: photos[0] }} />
         <Card.Content>
-          <Title>{name}</Title>
-          <Paragraph>Card content</Paragraph>
+          <TitleText>{name}</TitleText>
+          <ParagraphText>{address}</ParagraphText>
         </Card.Content>
       </Card>
     </CardListView>

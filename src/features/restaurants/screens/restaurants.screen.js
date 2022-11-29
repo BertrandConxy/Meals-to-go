@@ -11,7 +11,8 @@ const RestaurantScreen = () => {
 
   const RestaurantScreenView = styled.View`
     flex: 1;
-    background-color: white;
+    background-color: ${(props) => props.theme.colors.bg.primary};
+    padding: ${(props) => props.theme.space[3]};
   `;
 
   return (
