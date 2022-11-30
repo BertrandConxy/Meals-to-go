@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 import { Card, Title, Paragraph } from 'react-native-paper'
-import Spacer from './spacer.component'
+import { Spacer } from '../../../components/spacer.component'
 import React from 'react'
 import { SvgXml } from 'react-native-svg'
 import star from '../../../../assets/star'
@@ -73,9 +73,9 @@ const RestaurantInfo = ({ restaurant = {} }) => {
             )}
             <RowContainer>
               {isClosedTemporarily && <TextRed>CLOSED TEMPORARILY</TextRed>}
-              <Spacer variant="right.medium" />
+              <Spacer variant="left.medium" />
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
-              <Spacer variant="right.medium" />
+              <Spacer variant="left.medium" />
               {icon && <IconImage source={{ uri: icon }} />}
             </RowContainer>
           </RatingContainer>
