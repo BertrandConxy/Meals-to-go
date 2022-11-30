@@ -4,6 +4,7 @@ import RestaurantScreen from './src/features/restaurants/screens/restaurants.scr
 import styled from 'styled-components/native'
 import { theme } from './src/infrastructure/theme'
 import { ThemeProvider } from 'styled-components/native'
+import { NavigationContainer } from '@react-navigation/native'
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -28,10 +29,12 @@ export default App = () => {
   `
   return (
     <ThemeProvider theme={theme}>
-      <AppView>
-        <RestaurantScreen />
-        <StatusBar style="auto" />
-      </AppView>
+      <NavigationContainer>
+        <AppView>
+          <RestaurantScreen />
+          <StatusBar style="auto" />
+        </AppView>
+      </NavigationContainer>
     </ThemeProvider>
   )
 }

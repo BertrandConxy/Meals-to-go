@@ -15,6 +15,11 @@ const RestaurantScreen = () => {
     background-color: ${(props) => props.theme.colors.bg.primary};
     padding: ${(props) => props.theme.space[3]};
   `
+  const RestaurantList = styled(FlatList).attrs({
+    contentContainerStyle: {
+      padding: 8,
+    },
+  })``
 
   return (
     <RestaurantScreenView>
@@ -24,10 +29,9 @@ const RestaurantScreen = () => {
         elevation={2}
         value={searchQuery}
       />
-      <FlatList
+      <RestaurantList
         data={[{ name: 1 }, { name: 2 }, { name: 3 }]}
         renderItem={() => <RestaurantInfo />}
-        contentContainerStyle={{ padding: 10 }}
         keyExtractor={(item) => item.name}
       />
     </RestaurantScreenView>
