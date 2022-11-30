@@ -1,5 +1,7 @@
 import { StatusBar } from 'expo-status-bar'
 import RestaurantScreen from './src/features/restaurants/screens/restaurants.screen'
+import { SafeArea } from './src/components/utils/safe-area.component'
+import { Text } from 'react-native-paper'
 import styled from 'styled-components/native'
 import { theme } from './src/infrastructure/theme'
 import { ThemeProvider } from 'styled-components/native'
@@ -10,6 +12,18 @@ import {
   Oswald_400Regular,
 } from '@expo-google-fonts/oswald'
 import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato'
+
+const Map = () => (
+  <SafeArea>
+    <Text>Map</Text>
+  </SafeArea>
+)
+
+const Settings = () => (
+  <SafeArea>
+    <Text>Settings</Text>
+  </SafeArea>
+)
 
 export default App = () => {
   const [OswaldLoaded] = useOswald({
@@ -34,6 +48,8 @@ export default App = () => {
         <AppView>
           <Tab.Navigator>
             <Tab.Screen name="Restaurants" component={RestaurantScreen} />
+            <Tab.Screen name="Map" component={Map} />
+            <Tab.Screen name="Settings" component={Settings} />
           </Tab.Navigator>
           <StatusBar style="auto" />
         </AppView>
