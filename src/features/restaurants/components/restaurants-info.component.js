@@ -73,9 +73,9 @@ const RestaurantInfo = ({ restaurant = {} }) => {
             )}
             <RowContainer>
               {isClosedTemporarily && <TextRed>CLOSED TEMPORARILY</TextRed>}
-              <Spacer variant="left.medium" />
+              <Spacer position="left" size="medium" />
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
-              <Spacer variant="left.medium" />
+              <Spacer position="left" size="medium" />
               {icon && <IconImage source={{ uri: icon }} />}
             </RowContainer>
           </RatingContainer>
