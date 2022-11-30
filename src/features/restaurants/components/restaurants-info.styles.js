@@ -2,6 +2,7 @@ import styled from 'styled-components/native'
 
 export const CardListView = styled.View`
   margin-top: ${(props) => props.theme.space[3]};
+  margin-bottom: ${(props) => props.theme.space[3]};
   flex: 1;
   flex-grow: 1;
 `
