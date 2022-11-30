@@ -3,6 +3,7 @@ import RestaurantScreen from './src/features/restaurants/screens/restaurants.scr
 import { SafeArea } from './src/components/utils/safe-area.component'
 import { Text } from 'react-native-paper'
 import styled from 'styled-components/native'
+import { Ionicons } from '@expo/vector-icons'
 import { theme } from './src/infrastructure/theme'
 import { ThemeProvider } from 'styled-components/native'
 import { NavigationContainer } from '@react-navigation/native'
@@ -46,7 +47,27 @@ export default App = () => {
     <ThemeProvider theme={theme}>
       <NavigationContainer>
         <AppView>
-          <Tab.Navigator>
+          <Tab.Navigator
+            barStyle={{ backgroundColor: theme.colors.brand.muted }}
+            initialRouteName="Home"
+            activeColor={theme.colors.ui.error}
+            inactiveColor={theme.colors.ui.secondary}
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ color }) => {
+                let iconName
+
+                if (route.name === 'Restaurants') {
+                  iconName = 'md-restaurant'
+                } else if (route.name === 'Map') {
+                  iconName = 'md-map'
+                } else if (route.name === 'Settings') {
+                  iconName = 'md-settings'
+                }
+
+                return <Ionicons name={iconName} size={20} color={color} />
+              },
+            })}
+          >
             <Tab.Screen name="Restaurants" component={RestaurantScreen} />
             <Tab.Screen name="Map" component={Map} />
             <Tab.Screen name="Settings" component={Settings} />
