@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar'
-import Constants from 'expo-constants'
 import RestaurantScreen from './src/features/restaurants/screens/restaurants.screen'
 import styled from 'styled-components/native'
 import { theme } from './src/infrastructure/theme'
 import { ThemeProvider } from 'styled-components/native'
 import { NavigationContainer } from '@react-navigation/native'
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -23,15 +23,18 @@ export default App = () => {
     return null
   }
 
+  const Tab = createMaterialBottomTabNavigator()
+
   const AppView = styled.View`
     flex: 1;
-    margin-top: ${Constants.statusBarHeight}px;
   `
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>
         <AppView>
-          <RestaurantScreen />
+          <Tab.Navigator>
+            <Tab.Screen name="Restaurants" component={RestaurantScreen} />
+          </Tab.Navigator>
           <StatusBar style="auto" />
         </AppView>
       </NavigationContainer>
