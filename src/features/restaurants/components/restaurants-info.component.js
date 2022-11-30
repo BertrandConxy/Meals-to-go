@@ -1,10 +1,16 @@
-import styled from 'styled-components/native'
-import { Card, Title, Paragraph } from 'react-native-paper'
-import { Spacer } from '../../../components/spacer.component'
 import React from 'react'
+import { Card } from 'react-native-paper'
+import { Spacer } from '../../../components/spacer/spacer.component'
+import { Text } from '../../../components/typography/text.component'
 import { SvgXml } from 'react-native-svg'
 import star from '../../../../assets/star'
 import open from '../../../../assets/open'
+import {
+  CardListView,
+  RatingContainer,
+  RowContainer,
+  IconImage,
+} from './restaurants-info.styles'
 
 const RestaurantInfo = ({ restaurant = {} }) => {
   const {
@@ -21,48 +27,12 @@ const RestaurantInfo = ({ restaurant = {} }) => {
 
   const ratingArray = Array.from(new Array(Math.floor(rating)))
 
-  const CardListView = styled.View`
-    margin-top: ${(props) => props.theme.space[3]};
-    flex: 1;
-    flex-grow: 1;
-  `
-
-  const TitleText = styled(Title)`
-    padding-top: ${(props) => props.theme.space[3]};
-    font-family: ${(props) => props.theme.fonts.heading};
-  `
-  const ParagraphText = styled(Paragraph)`
-    font-family: ${(props) => props.theme.fonts.body};
-    font-size: ${(props) => props.theme.fontSizes.caption};
-  `
-
-  const RatingContainer = styled.View`
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: ${(props) => props.theme.space[2]};
-    padding-bottom: ${(props) => props.theme.space[2]};
-  `
-
-  const RowContainer = styled.View`
-    flex-direction: row;
-  `
-
-  const TextRed = styled.Text`
-    color: ${(props) => props.theme.colors.ui.error};
-    font-size: ${(props) => props.theme.fontSizes.caption};
-  `
-  const IconImage = styled.Image`
-    width: 20px;
-    height: 20px;
-  `
-
   return (
     <CardListView>
       <Card elevation={2} mode="elevated">
         <Card.Cover source={{ uri: photos[0] }} />
         <Card.Content>
-          <TitleText>{name}</TitleText>
+          <Text variant="title">{name}</Text>
           <RatingContainer>
             {rating && (
               <RowContainer>
@@ -72,14 +42,16 @@ const RestaurantInfo = ({ restaurant = {} }) => {
               </RowContainer>
             )}
             <RowContainer>
-              {isClosedTemporarily && <TextRed>CLOSED TEMPORARILY</TextRed>}
+              {isClosedTemporarily && (
+                <Text variant="error">CLOSED TEMPORARILY</Text>
+              )}
               <Spacer position="left" size="medium" />
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
               <Spacer position="left" size="medium" />
               {icon && <IconImage source={{ uri: icon }} />}
             </RowContainer>
           </RatingContainer>
-          <ParagraphText>{address}</ParagraphText>
+          <Text variant="label">{address}</Text>
         </Card.Content>
       </Card>
     </CardListView>

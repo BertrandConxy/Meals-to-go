@@ -30,3 +30,8 @@ export const Spacer = ({ position, size, child }) => {
   const variant = getVariant(position, size, theme)
   return <SpacerView variant={variant}>{child}</SpacerView>
 }
+
+Spacer.defaultProps = {
+  position: 'top',
+  size: 'small',
+}
