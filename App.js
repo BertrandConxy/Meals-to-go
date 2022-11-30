@@ -26,6 +26,21 @@ const Settings = () => (
   </SafeArea>
 )
 
+const ICON_NAME = {
+  Restaurants: 'md-restaurant',
+  Map: 'md-map',
+  Settings: 'md-settings',
+}
+
+const screenOptions = ({ route }) => {
+  const iconName = ICON_NAME[route.name]
+  return {
+    tabBarIcon: ({ color }) => (
+      <Ionicons name={iconName} size={20} color={color} />
+    ),
+  }
+}
+
 export default App = () => {
   const [OswaldLoaded] = useOswald({
     Oswald_400Regular,
@@ -48,25 +63,11 @@ export default App = () => {
       <NavigationContainer>
         <AppView>
           <Tab.Navigator
-            barStyle={{ backgroundColor: theme.colors.brand.muted }}
+            barStyle={{ backgroundColor: theme.colors.bg.secondary }}
             initialRouteName="Home"
             activeColor={theme.colors.ui.error}
             inactiveColor={theme.colors.ui.secondary}
-            screenOptions={({ route }) => ({
-              tabBarIcon: ({ color }) => {
-                let iconName
-
-                if (route.name === 'Restaurants') {
-                  iconName = 'md-restaurant'
-                } else if (route.name === 'Map') {
-                  iconName = 'md-map'
-                } else if (route.name === 'Settings') {
-                  iconName = 'md-settings'
-                }
-
-                return <Ionicons name={iconName} size={20} color={color} />
-              },
-            })}
+            screenOptions={screenOptions}
           >
             <Tab.Screen name="Restaurants" component={RestaurantScreen} />
             <Tab.Screen name="Map" component={Map} />
