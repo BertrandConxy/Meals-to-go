@@ -9,6 +9,7 @@ import { ThemeProvider } from 'styled-components/native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 import { RestaurantsContextProvider } from './src/services/restaurants/restaurants.context'
+import { LocationContextProvider } from './src/services/location/location.context'
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -62,22 +63,24 @@ export default App = () => {
   return (
     <ThemeProvider theme={theme}>
       <RestaurantsContextProvider>
-        <NavigationContainer>
-          <AppView>
-            <Tab.Navigator
-              barStyle={{ backgroundColor: theme.colors.bg.secondary }}
-              initialRouteName="Home"
-              activeColor={theme.colors.ui.error}
-              inactiveColor={theme.colors.ui.secondary}
-              screenOptions={screenOptions}
-            >
-              <Tab.Screen name="Restaurants" component={RestaurantScreen} />
-              <Tab.Screen name="Map" component={Map} />
-              <Tab.Screen name="Settings" component={Settings} />
-            </Tab.Navigator>
-            <StatusBar style="auto" />
-          </AppView>
-        </NavigationContainer>
+        <LocationContextProvider>
+          <NavigationContainer>
+            <AppView>
+              <Tab.Navigator
+                barStyle={{ backgroundColor: theme.colors.bg.secondary }}
+                initialRouteName="Home"
+                activeColor={theme.colors.ui.error}
+                inactiveColor={theme.colors.ui.secondary}
+                screenOptions={screenOptions}
+              >
+                <Tab.Screen name="Restaurants" component={RestaurantScreen} />
+                <Tab.Screen name="Map" component={Map} />
+                <Tab.Screen name="Settings" component={Settings} />
+              </Tab.Navigator>
+              <StatusBar style="auto" />
+            </AppView>
+          </NavigationContainer>
+        </LocationContextProvider>
       </RestaurantsContextProvider>
     </ThemeProvider>
   )
