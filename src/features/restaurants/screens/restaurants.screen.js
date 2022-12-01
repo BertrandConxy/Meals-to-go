@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { Searchbar } from 'react-native-paper'
+import { ActivityIndicator, MD2Colors } from 'react-native-paper'
 import { FlatList } from 'react-native'
 import RestaurantInfo from '../components/restaurants-info.component'
 import { RestaurantsContext } from '../../../services/restaurants/restaurants.context'
@@ -23,6 +24,22 @@ const RestaurantScreen = () => {
       padding: 8,
     },
   })``
+
+  const IndicatorContainer = styled.View`
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+  `
+
+  if (isLoading) {
+    return (
+      <SafeArea>
+        <IndicatorContainer>
+          <ActivityIndicator animating={true} color={MD2Colors.blue500} />
+        </IndicatorContainer>
+      </SafeArea>
+    )
+  }
 
   return (
     <SafeArea>
