@@ -6,8 +6,22 @@ const SearchComponent = () => {
   const { keyword, search } = useContext(LocationContext)
   const [searchKeyword, setSearchKeyword] = useState(keyword)
 
+  const handleSubmit = () => {
+    search(searchKeyword)
+  }
+
+  const handleChange = (search) => {
+    setSearchKeyword(search)
+  }
+
   return (
-    <Searchbar placeholder="Search query" elevation={2} value={searchKeyword} />
+    <Searchbar
+      placeholder="Search Location"
+      elevation={2}
+      value={searchKeyword}
+      onSubmitEditing={handleSubmit}
+      onChangeText={handleChange}
+    />
   )
 }
 
