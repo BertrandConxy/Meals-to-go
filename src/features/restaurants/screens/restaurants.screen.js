@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Searchbar } from 'react-native-paper'
 import { FlatList } from 'react-native'
 import RestaurantInfo from '../components/restaurants-info.component'
+import { RestaurantsContext } from '../../../services/restaurants/restaurants.context'
 import styled from 'styled-components/native'
 import { SafeArea } from '../../../components/utils/safe-area.component'
 
@@ -10,6 +11,8 @@ const RestaurantScreen = () => {
   const handleChange = (query) => {
     setSearchQuery(query)
   }
+
+  const restaurantsContext = useContext(RestaurantsContext)
 
   const RestaurantScreenView = styled.View`
     background-color: ${(props) => props.theme.colors.bg.primary};
@@ -31,7 +34,7 @@ const RestaurantScreen = () => {
           value={searchQuery}
         />
         <RestaurantList
-          data={[{ name: 1 }, { name: 2 }, { name: 3 }]}
+          data={restaurantsContext.restaurants}
           renderItem={() => <RestaurantInfo />}
           keyExtractor={(item) => item.name}
         />
