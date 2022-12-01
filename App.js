@@ -62,8 +62,8 @@ export default App = () => {
   `
   return (
     <ThemeProvider theme={theme}>
-      <RestaurantsContextProvider>
-        <LocationContextProvider>
+      <LocationContextProvider>
+        <RestaurantsContextProvider>
           <NavigationContainer>
             <AppView>
               <Tab.Navigator
@@ -80,8 +80,8 @@ export default App = () => {
               <StatusBar style="auto" />
             </AppView>
           </NavigationContainer>
-        </LocationContextProvider>
-      </RestaurantsContextProvider>
+        </RestaurantsContextProvider>
+      </LocationContextProvider>
     </ThemeProvider>
   )
 }
