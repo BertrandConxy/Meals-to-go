@@ -12,7 +12,7 @@ const RestaurantScreen = () => {
     setSearchQuery(query)
   }
 
-  const restaurantsContext = useContext(RestaurantsContext)
+  const { isLoading, restaurants, error } = useContext(RestaurantsContext)
 
   const RestaurantScreenView = styled.View`
     background-color: ${(props) => props.theme.colors.bg.primary};
@@ -34,8 +34,8 @@ const RestaurantScreen = () => {
           value={searchQuery}
         />
         <RestaurantList
-          data={restaurantsContext.restaurants}
-          renderItem={() => <RestaurantInfo />}
+          data={restaurants}
+          renderItem={({ item }) => <RestaurantInfo restaurant={item} />}
           keyExtractor={(item) => item.name}
         />
       </RestaurantScreenView>

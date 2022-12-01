@@ -1,8 +1,11 @@
-import { mocks } from './mock'
+import { mocks, mockImages } from './mock'
 import camelize from 'camelize'
 
-const restaurantTransform = (results = []) => {
+export const restaurantTransform = (results = []) => {
   const mappedResults = results.map((restaurant) => {
+    restaurant.photos = restaurant.photos.map((p) => {
+      return mockImages[Math.ceil(Math.random() * (mockImages.length - 1))]
+    })
     return {
       ...restaurant,
       address: restaurant.vicinity,
@@ -16,7 +19,7 @@ const restaurantTransform = (results = []) => {
 export const restaurantsRequest = async (location = '43.653225,-79.383186') => {
   try {
     const mock = await mocks[location]
-    const camelizeMock = await restaurantTransform(mock)
+    const camelizeMock = await restaurantTransform(mock.results)
     return camelizeMock
   } catch (error) {
     console.log(error)
