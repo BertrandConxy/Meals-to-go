@@ -10,10 +10,6 @@ export const LocationContextProvider = ({ children }) => {
   const [error, setError] = useState(null)
 
   const onSearch = (searchKeyword) => {
-    if (!searchKeyword.length) {
-      return
-    }
-
     setIsLoading(true)
     setKeyword(searchKeyword)
   }

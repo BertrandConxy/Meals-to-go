@@ -14,10 +14,6 @@ const SearchComponent = () => {
     setSearchKeyword(search)
   }
 
-  useEffect(() => {
-    search(searchKeyword)
-  }, [])
-
   return (
     <Searchbar
       placeholder="Search Location"

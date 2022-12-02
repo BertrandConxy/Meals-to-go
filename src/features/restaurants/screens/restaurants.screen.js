@@ -8,7 +8,7 @@ import styled from 'styled-components/native'
 import { SafeArea } from '../../../components/utils/safe-area.component'
 
 const RestaurantScreen = () => {
-  const { isLoading, restaurants, error } = useContext(RestaurantsContext)
+  const { isLoading, restaurants } = useContext(RestaurantsContext)
 
   const RestaurantScreenView = styled.View`
     background-color: ${(props) => props.theme.colors.bg.primary};
@@ -40,6 +40,11 @@ const RestaurantScreen = () => {
     <SafeArea>
       <RestaurantScreenView>
         <SearchComponent />
+        {isLoading && (
+          <IndicatorContainer>
+            <ActivityIndicator animating={true} color={MD2Colors.blue500} />
+          </IndicatorContainer>
+        )}
         <RestaurantList
           data={restaurants}
           renderItem={({ item }) => <RestaurantInfo restaurant={item} />}
