@@ -3,8 +3,8 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 import { Ionicons } from '@expo/vector-icons'
 import { theme } from '../theme'
+import RestaurantsNavigator from './restaurants.navigator'
 import { Text } from 'react-native-paper'
-import RestaurantScreen from '../../features/restaurants/screens/restaurants.screen'
 import { SafeArea } from '../../components/utils/safe-area.component'
 
 const Map = () => (
@@ -45,7 +45,7 @@ const AppNavigator = () => {
         inactiveColor={theme.colors.ui.secondary}
         initialRouteName="Home"
       >
-        <Tab.Screen name="Restaurants" component={RestaurantScreen} />
+        <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
         <Tab.Screen name="Map" component={Map} />
         <Tab.Screen name="Settings" component={Settings} />
       </Tab.Navigator>
