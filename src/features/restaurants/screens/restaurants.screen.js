@@ -40,11 +40,6 @@ const RestaurantScreen = () => {
     <SafeArea>
       <RestaurantScreenView>
         <SearchComponent />
-        {isLoading && (
-          <IndicatorContainer>
-            <ActivityIndicator animating={true} color={MD2Colors.blue500} />
-          </IndicatorContainer>
-        )}
         <RestaurantList
           data={restaurants}
           renderItem={({ item }) => <RestaurantInfo restaurant={item} />}
