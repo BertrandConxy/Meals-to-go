@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { ActivityIndicator, MD2Colors } from 'react-native-paper'
 import { FlatList, TouchableOpacity } from 'react-native'
 import RestaurantInfo from '../components/restaurants-info.component'
@@ -8,32 +8,36 @@ import FavoriteIcon from '../../../components/favorites/favorite.component'
 import styled from 'styled-components/native'
 import { SafeArea } from '../../../components/utils/safe-area.component'
 
+const RestaurantScreenView = styled.View`
+  flex: 1;
+  background-color: ${(props) => props.theme.colors.bg.primary};
+  padding: ${(props) => props.theme.space[3]};
+`
+const RestaurantList = styled(FlatList).attrs({
+  contentContainerStyle: {
+    padding: 8,
+  },
+})``
+
+const IndicatorContainer = styled.View`
+  flex: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+`
 const RestaurantScreen = ({ navigation }) => {
   const { isLoading, restaurants } = useContext(RestaurantsContext)
+  const [isToggled, setIsToggled] = useState(false)
 
-  const RestaurantScreenView = styled.View`
-    flex: 1;
-    background-color: ${(props) => props.theme.colors.bg.primary};
-    padding: ${(props) => props.theme.space[3]};
-  `
-  const RestaurantList = styled(FlatList).attrs({
-    contentContainerStyle: {
-      padding: 8,
-    },
-  })``
-
-  const IndicatorContainer = styled.View`
-    flex: 1;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 999;
-  `
+  const handleToggle = () => {
+    setIsToggled(!isToggled)
+  }
 
   return (
     <SafeArea>
       <RestaurantScreenView>
-        <SearchComponent />
+        <SearchComponent isToggled={isToggled} handleToggle={handleToggle} />
         {isLoading && (
           <IndicatorContainer>
             <ActivityIndicator
