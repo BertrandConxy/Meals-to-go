@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react'
 import { ActivityIndicator, MD2Colors } from 'react-native-paper'
 import { FlatList, TouchableOpacity } from 'react-native'
-import RestaurantInfo from '../components/restaurants-info.component'
 import { RestaurantsContext } from '../../../services/restaurants/restaurants.context'
+import RestaurantInfo from '../components/restaurants-info.component'
 import SearchComponent from '../components/search.component'
 import FavoriteIcon from '../../../components/favorites/favorite.component'
-import styled from 'styled-components/native'
 import { SafeArea } from '../../../components/utils/safe-area.component'
+import FavoritesBar from '../../../components/favorites/favorites-bar.component'
+import styled from 'styled-components/native'
 
 const RestaurantScreenView = styled.View`
   flex: 1;
@@ -36,17 +37,18 @@ const RestaurantScreen = ({ navigation }) => {
 
   return (
     <SafeArea>
+      {isLoading && (
+        <IndicatorContainer>
+          <ActivityIndicator
+            animating={true}
+            color={MD2Colors.blue500}
+            size={50}
+          />
+        </IndicatorContainer>
+      )}
       <RestaurantScreenView>
         <SearchComponent isToggled={isToggled} handleToggle={handleToggle} />
-        {isLoading && (
-          <IndicatorContainer>
-            <ActivityIndicator
-              animating={true}
-              color={MD2Colors.blue500}
-              size={50}
-            />
-          </IndicatorContainer>
-        )}
+        {isToggled && <FavoritesBar />}
         <RestaurantList
           data={restaurants}
           renderItem={({ item }) => {

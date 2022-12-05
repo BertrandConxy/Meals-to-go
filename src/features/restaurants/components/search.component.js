@@ -16,7 +16,7 @@ const SearchComponent = ({ isToggled, handleToggle }) => {
 
   return (
     <Searchbar
-      icon={isToggled ? 'heart-outline' : 'heart'}
+      icon={isToggled ? 'heart' : 'heart-outline'}
       onIconPress={() => handleToggle()}
       placeholder="Search Location"
       elevation={2}
