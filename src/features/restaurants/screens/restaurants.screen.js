@@ -48,7 +48,12 @@ const RestaurantScreen = ({ navigation }) => {
       )}
       <RestaurantScreenView>
         <SearchComponent isToggled={isToggled} handleToggle={handleToggle} />
-        {isToggled && <FavoritesBar />}
+        {isToggled && (
+          <FavoritesBar
+            favorites={restaurants}
+            onNavigate={navigation.navigate}
+          />
+        )}
         <RestaurantList
           data={restaurants}
           renderItem={({ item }) => {

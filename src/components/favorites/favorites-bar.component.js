@@ -1,11 +1,35 @@
-import { View, Text } from 'react-native'
+import { ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
+import styled from 'styled-components'
+import CompactRestaurantInfo from '../restaurant/compact-restaurant-info.component'
 
-const FavoritesBar = () => {
+const FavoritesWrapper = styled.View`
+  padding: 10px;
+`
+const BarView = styled.View`
+  margin-right: 10px;
+`
+
+const FavoritesBar = ({ favorites, onNavigate }) => {
   return (
-    <View>
-      <Text>FavoritesBar</Text>
-    </View>
+    <FavoritesWrapper>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        {favorites.map((restaurant) => {
+          return (
+            <BarView key={restaurant.name}>
+              <TouchableOpacity
+                onPress={() => onNavigate('RestaurantDetail', { restaurant })}
+              >
+                <CompactRestaurantInfo
+                  key={`card-${restaurant.name}`}
+                  restaurant={restaurant}
+                />
+              </TouchableOpacity>
+            </BarView>
+          )
+        })}
+      </ScrollView>
+    </FavoritesWrapper>
   )
 }
 
