@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { ActivityIndicator, MD2Colors } from 'react-native-paper'
 import { FlatList, TouchableOpacity } from 'react-native'
 import { RestaurantsContext } from '../../../services/restaurants/restaurants.context'
+import { FavoritesContext } from '../../../services/favorites/favorites.context'
 import RestaurantInfo from '../components/restaurants-info.component'
 import SearchComponent from '../components/search.component'
 import FavoriteIcon from '../../../components/favorites/favorite.component'
@@ -29,6 +30,7 @@ const IndicatorContainer = styled.View`
 `
 const RestaurantScreen = ({ navigation }) => {
   const { isLoading, restaurants } = useContext(RestaurantsContext)
+  const { favorites } = useContext(FavoritesContext)
   const [isToggled, setIsToggled] = useState(false)
 
   const handleToggle = () => {
@@ -50,7 +52,7 @@ const RestaurantScreen = ({ navigation }) => {
         <SearchComponent isToggled={isToggled} handleToggle={handleToggle} />
         {isToggled && (
           <FavoritesBar
-            favorites={restaurants}
+            favorites={favorites}
             onNavigate={navigation.navigate}
           />
         )}

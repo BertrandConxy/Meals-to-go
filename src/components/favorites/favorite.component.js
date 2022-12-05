@@ -21,11 +21,11 @@ const FavoriteIcon = ({ restaurant }) => {
         name={isFavorite ? 'heart' : 'heart-outline'}
         size={24}
         color={isFavorite ? 'red' : 'white'}
-        onPress={() =>
+        onPress={() => {
           !isFavorite
             ? addToFavorites(restaurant)
             : removeFromFavorites(restaurant)
-        }
+        }}
       />
     </Favorite>
   )
