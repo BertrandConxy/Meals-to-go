@@ -4,6 +4,7 @@ import { FlatList, TouchableOpacity } from 'react-native'
 import RestaurantInfo from '../components/restaurants-info.component'
 import { RestaurantsContext } from '../../../services/restaurants/restaurants.context'
 import SearchComponent from '../components/search.component'
+import FavoriteIcon from '../../../components/favorites/favorite.component'
 import styled from 'styled-components/native'
 import { SafeArea } from '../../../components/utils/safe-area.component'
 
@@ -54,6 +55,7 @@ const RestaurantScreen = ({ navigation }) => {
                 }
               >
                 <RestaurantInfo restaurant={item} />
+                <FavoriteIcon restaurant={item} />
               </TouchableOpacity>
             )
           }}
