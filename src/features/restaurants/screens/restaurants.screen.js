@@ -11,6 +11,7 @@ const RestaurantScreen = ({ navigation }) => {
   const { isLoading, restaurants } = useContext(RestaurantsContext)
 
   const RestaurantScreenView = styled.View`
+    flex: 1;
     background-color: ${(props) => props.theme.colors.bg.primary};
     padding: ${(props) => props.theme.space[3]};
   `
@@ -22,36 +23,40 @@ const RestaurantScreen = ({ navigation }) => {
 
   const IndicatorContainer = styled.View`
     flex: 1;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
   `
-
-  if (isLoading) {
-    return (
-      <SafeArea>
-        <IndicatorContainer>
-          <ActivityIndicator animating={true} color={MD2Colors.blue500} />
-        </IndicatorContainer>
-      </SafeArea>
-    )
-  }
 
   return (
     <SafeArea>
       <RestaurantScreenView>
         <SearchComponent />
+        {isLoading && (
+          <IndicatorContainer>
+            <ActivityIndicator
+              animating={true}
+              color={MD2Colors.blue500}
+              size={50}
+            />
+          </IndicatorContainer>
+        )}
         <RestaurantList
           data={restaurants}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate('RestaurantDetail', { restaurant: item })
-              }
-              style={{ marginBottom: 16 }}
-            >
-              <RestaurantInfo restaurant={item} />
-            </TouchableOpacity>
-          )}
+          renderItem={({ item }) => {
+            return (
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('RestaurantDetail', {
+                    restaurant: item,
+                  })
+                }
+              >
+                <RestaurantInfo restaurant={item} />
+              </TouchableOpacity>
+            )
+          }}
           keyExtractor={(item) => item.name}
         />
       </RestaurantScreenView>

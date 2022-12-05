@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 import { LocationContext } from '../../../services/location/location.context'
 import { Searchbar } from 'react-native-paper'
 
