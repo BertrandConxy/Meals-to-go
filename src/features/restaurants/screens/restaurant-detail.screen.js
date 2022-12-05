@@ -1,5 +1,6 @@
 import React from 'react'
 import RestaurantInfo from '../components/restaurants-info.component'
+import FavoriteIcon from '../../../components/favorites/favorite.component'
 import MenuList from '../components/menu-list.component'
 import { SafeArea } from '../../../components/utils/safe-area.component'
 import styled from 'styled-components'
@@ -14,6 +15,7 @@ const RestaurantDetail = ({ route }) => {
     <SafeArea>
       <DetailsContainer>
         <RestaurantInfo restaurant={restaurant} />
+        <FavoriteIcon restaurant={restaurant} />
         <MenuList />
       </DetailsContainer>
     </SafeArea>

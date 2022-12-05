@@ -11,7 +11,7 @@ const Favorite = styled.View`
 `
 
 const FavoriteIcon = ({ restaurant }) => {
-  const { favorites, addToFavorites, RemoveFromFavorites } = useContext(
+  const { favorites, addToFavorites, removeFromFavorites } = useContext(
     FavoritesContext,
   )
   const isFavorite = favorites.find((r) => r.placeId === restaurant.placeId)
@@ -24,7 +24,7 @@ const FavoriteIcon = ({ restaurant }) => {
         onPress={() =>
           !isFavorite
             ? addToFavorites(restaurant)
-            : RemoveFromFavorites(restaurant)
+            : removeFromFavorites(restaurant)
         }
       />
     </Favorite>
