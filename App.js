@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 import Navigation from './src/infrastructure/navigation'
 import styled from 'styled-components/native'
