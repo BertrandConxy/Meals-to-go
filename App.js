@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import Navigation from './src/infrastructure/navigation'
 import styled from 'styled-components/native'
@@ -27,6 +28,7 @@ export default App = () => {
   const AppView = styled.View`
     flex: 1;
   `
+
   return (
     <ThemeProvider theme={theme}>
       <FavoritesContextProvider>
