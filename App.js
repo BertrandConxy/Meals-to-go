@@ -4,10 +4,10 @@ import Navigation from './src/infrastructure/navigation'
 import styled from 'styled-components/native'
 import { theme } from './src/infrastructure/theme'
 import { ThemeProvider } from 'styled-components/native'
+import { AuthenticationContextProvider } from './src/services/authentication/authentication.context'
 import { RestaurantsContextProvider } from './src/services/restaurants/restaurants.context'
 import { LocationContextProvider } from './src/services/location/location.context'
 import { FavoritesContextProvider } from './src/services/favorites/favorites.context'
-import { AuthenticationContextProvider } from './src/services/authentication/authentication.context'
 import {
   useFonts as useOswald,
   Oswald_400Regular,
