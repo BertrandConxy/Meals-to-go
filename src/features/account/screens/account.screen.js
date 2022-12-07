@@ -5,19 +5,27 @@ import AccountBackground, {
 } from '../components/account.style'
 import { Spacer } from '../../../components/spacer/spacer.component'
 
-const AccountScreen = () => {
+const AccountScreen = ({ navigation }) => {
   return (
     <AccountBackground>
       <AccountContainer>
         <AuthButton
           icon="lock-open-outline"
           mode="contained"
-          onPress={() => {}}
+          onPress={() => {
+            navigation.navigate('Login')
+          }}
         >
           Login
         </AuthButton>
         <Spacer size="large" />
-        <AuthButton icon="email" mode="contained" onPress={() => {}}>
+        <AuthButton
+          icon="email"
+          mode="contained"
+          onPress={() => {
+            navigation.navigate('Register')
+          }}
+        >
           Register
         </AuthButton>
       </AccountContainer>
