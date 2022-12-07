@@ -1,4 +1,6 @@
 import React, { useState, createContext } from 'react'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
+import { auth } from '../../../firebaseConfig'
 import { login, register } from './authentication.service'
 
 export const AuthenticationContext = createContext()
@@ -8,6 +10,16 @@ export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUser(user)
+      setIsAuthenticated(true)
+    } else {
+      setUser(null)
+      setIsAuthenticated(false)
+    }
+  })
 
   const onLogin = async (email, password) => {
     setIsLoading(true)
@@ -51,6 +63,12 @@ export const AuthenticationContextProvider = ({ children }) => {
     }
   }
 
+  const onLogout = () => {
+    setUser(null)
+    signOut(auth)
+    setIsAuthenticated(false)
+  }
+
   return (
     <AuthenticationContext.Provider
       value={{
@@ -60,6 +78,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         error,
         onLogin,
         onRegister,
+        onLogout,
       }}
     >
       {children}
