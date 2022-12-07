@@ -8,6 +8,7 @@ import SearchComponent from '../components/search.component'
 import FavoriteIcon from '../../../components/favorites/favorite.component'
 import { SafeArea } from '../../../components/utils/safe-area.component'
 import FavoritesBar from '../../../components/favorites/favorites-bar.component'
+import FadeInView from '../../../components/animations/fade.animation'
 import styled from 'styled-components/native'
 
 const RestaurantScreenView = styled.View`
@@ -56,24 +57,26 @@ const RestaurantScreen = ({ navigation }) => {
             onNavigate={navigation.navigate}
           />
         )}
-        <RestaurantList
-          data={restaurants}
-          renderItem={({ item }) => {
-            return (
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('RestaurantDetail', {
-                    restaurant: item,
-                  })
-                }
-              >
-                <RestaurantInfo restaurant={item} />
-                <FavoriteIcon restaurant={item} />
-              </TouchableOpacity>
-            )
-          }}
-          keyExtractor={(item) => item.name}
-        />
+        <FadeInView>
+          <RestaurantList
+            data={restaurants}
+            renderItem={({ item }) => {
+              return (
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('RestaurantDetail', {
+                      restaurant: item,
+                    })
+                  }
+                >
+                  <RestaurantInfo restaurant={item} />
+                  <FavoriteIcon restaurant={item} />
+                </TouchableOpacity>
+              )
+            }}
+            keyExtractor={(item) => item.name}
+          />
+        </FadeInView>
       </RestaurantScreenView>
     </SafeArea>
   )
