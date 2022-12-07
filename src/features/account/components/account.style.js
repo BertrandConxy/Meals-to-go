@@ -1,7 +1,7 @@
 import React from 'react'
 import { colors } from '../../../infrastructure/theme/colors'
 import styled from 'styled-components/native'
-import { Button } from 'react-native-paper'
+import { Button, TextInput } from 'react-native-paper'
 
 const ImageBg = styled.ImageBackground`
   flex: 1;
@@ -35,6 +35,7 @@ export const AccountContainer = styled.View`
   padding: ${(props) => props.theme.space[4]};
   margin-top: ${(props) => props.theme.space[2]};
   border-radius: 10px;
+  width: 90%;
 `
 
 export const AuthButton = styled(Button).attrs({
@@ -43,5 +44,11 @@ export const AuthButton = styled(Button).attrs({
   padding: ${(props) => props.theme.space[2]};
   border-radius: 10px;
 `
+
+export const AuthInput = styled(TextInput).attrs({
+  selectionColor: colors.brand.primary,
+  underlineColor: colors.brand.secondary,
+  activeUnderlineColor: colors.brand.primary,
+})``
 
 export default AccountBackground
