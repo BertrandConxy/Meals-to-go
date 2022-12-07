@@ -5,10 +5,11 @@ import AccountBackground, {
   AuthInput,
 } from '../components/account.style'
 import { Spacer } from '../../../components/spacer/spacer.component'
+import { Text } from '../../../components/typography/text.component'
 import { AuthenticationContext } from '../../../services/authentication/authentication.context'
 
 const LoginScreen = () => {
-  const { onLogin } = useContext(AuthenticationContext)
+  const { onLogin, error } = useContext(AuthenticationContext)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   return (
@@ -41,6 +42,12 @@ const LoginScreen = () => {
         >
           Login
         </AuthButton>
+        {error && (
+          <>
+            <Spacer size="large" />
+            <Text variant="error">{error}</Text>
+          </>
+        )}
       </AccountContainer>
     </AccountBackground>
   )

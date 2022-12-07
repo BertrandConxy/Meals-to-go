@@ -14,11 +14,19 @@ export const AuthenticationContextProvider = ({ children }) => {
     try {
       const user = await login(email, password)
       setUser(user)
+      setIsLoading(false)
       setIsAuthenticated(true)
-      setIsLoading(false)
     } catch (error) {
-      setError(error)
       setIsLoading(false)
+      if (error.code === 'auth/user-not-found') {
+        setError('User not found')
+      } else if (error.code === 'auth/wrong-password') {
+        setError('Wrong password')
+      } else if (error.code === 'auth/invalid-email') {
+        setError('Invalid email')
+      } else {
+        setError('Something went wrong')
+      }
     }
   }
 
