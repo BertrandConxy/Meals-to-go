@@ -3,6 +3,7 @@ import AccountBackground, {
   AccountContainer,
   AuthButton,
   AuthInput,
+  ErrorContainer,
 } from '../components/account.style'
 import { Spacer } from '../../../components/spacer/spacer.component'
 import { Text } from '../../../components/typography/text.component'
@@ -43,10 +44,9 @@ const LoginScreen = ({ navigation }) => {
           Login
         </AuthButton>
         {error && (
-          <>
-            <Spacer size="large" />
-            <Text variant="error">{error}</Text>
-          </>
+          <ErrorContainer>
+            <Text variant="error">Error: {error}</Text>
+          </ErrorContainer>
         )}
       </AccountContainer>
       <Spacer size="large" />

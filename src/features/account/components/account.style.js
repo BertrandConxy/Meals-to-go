@@ -59,4 +59,10 @@ export const Title = styled.Text`
   font-weight: bold;
 `
 
+export const ErrorContainer = styled.View`
+  max-width: 300px;
+  align-items: flex-start;
+  margin-top: ${(props) => props.theme.space[2]};
+`
+
 export default AccountBackground
