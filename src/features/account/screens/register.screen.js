@@ -1,4 +1,6 @@
 import React, { useState, useContext } from 'react'
+import { ActivityIndicator, MD2Colors } from 'react-native-paper'
+
 import { Text } from '../../../components/typography/text.component'
 import AccountBackground, {
   AccountContainer,
@@ -13,50 +15,56 @@ const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  const { onRegister, error } = useContext(AuthenticationContext)
+  const { onRegister, error, isLoading } = useContext(AuthenticationContext)
   return (
     <AccountBackground>
       <AccountContainer>
-        <AuthInput
-          label="Email"
-          value={email}
-          textContentType="emailAddress"
-          keyboardType="email-address"
-          autoCapitalize="none"
-          onChangeText={(u) => setEmail(u)}
-        />
-        <Spacer size="large" />
-        <AuthInput
-          label="Password"
-          value={password}
-          textContentType="password"
-          secureTextEntry
-          autoCapitalize="none"
-          onChangeText={(p) => setPassword(p)}
-        />
-        <Spacer size="large" />
-        <AuthInput
-          label="Confirm Password"
-          value={confirmPassword}
-          textContentType="password"
-          secureTextEntry
-          autoCapitalize="none"
-          onChangeText={(p) => setConfirmPassword(p)}
-        />
-        <Spacer size="large" />
-        <AuthButton
-          icon="email"
-          mode="contained"
-          onPress={() => {
-            onRegister(email, password, confirmPassword)
-          }}
-        >
-          Register
-        </AuthButton>
-        {error && (
-          <ErrorContainer>
-            <Text variant="error">{error}</Text>
-          </ErrorContainer>
+        {isLoading ? (
+          <ActivityIndicator animating={true} color={MD2Colors.blue500} />
+        ) : (
+          <>
+            <AuthInput
+              label="Email"
+              value={email}
+              textContentType="emailAddress"
+              keyboardType="email-address"
+              autoCapitalize="none"
+              onChangeText={(u) => setEmail(u)}
+            />
+            <Spacer size="large" />
+            <AuthInput
+              label="Password"
+              value={password}
+              textContentType="password"
+              secureTextEntry
+              autoCapitalize="none"
+              onChangeText={(p) => setPassword(p)}
+            />
+            <Spacer size="large" />
+            <AuthInput
+              label="Confirm Password"
+              value={confirmPassword}
+              textContentType="password"
+              secureTextEntry
+              autoCapitalize="none"
+              onChangeText={(p) => setConfirmPassword(p)}
+            />
+            <Spacer size="large" />
+            <AuthButton
+              icon="email"
+              mode="contained"
+              onPress={() => {
+                onRegister(email, password, confirmPassword)
+              }}
+            >
+              Register
+            </AuthButton>
+            {error && (
+              <ErrorContainer>
+                <Text variant="error">{error}</Text>
+              </ErrorContainer>
+            )}
+          </>
         )}
       </AccountContainer>
       <Spacer size="large" />
