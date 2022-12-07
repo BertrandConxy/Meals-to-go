@@ -4,6 +4,7 @@ import AccountBackground, {
   AuthButton,
 } from '../components/account.style'
 import { Spacer } from '../../../components/spacer/spacer.component'
+import LottieView from 'lottie-react-native'
 
 const AccountScreen = ({ navigation }) => {
   return (
