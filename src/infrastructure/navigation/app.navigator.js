@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 import { Ionicons } from '@expo/vector-icons'
 import { theme } from '../theme'
@@ -32,19 +31,17 @@ const screenOptions = ({ route }) => {
 const AppNavigator = () => {
   const Tab = createMaterialBottomTabNavigator()
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={screenOptions}
-        barStyle={{ backgroundColor: theme.colors.bg.secondary }}
-        activeColor={theme.colors.ui.error}
-        inactiveColor={theme.colors.ui.secondary}
-        initialRouteName="Home"
-      >
-        <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
-        <Tab.Screen name="Map" component={MapScreen} />
-        <Tab.Screen name="Settings" component={Settings} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator
+      screenOptions={screenOptions}
+      barStyle={{ backgroundColor: theme.colors.bg.secondary }}
+      activeColor={theme.colors.ui.error}
+      inactiveColor={theme.colors.ui.secondary}
+      initialRouteName="Home"
+    >
+      <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
+      <Tab.Screen name="Map" component={MapScreen} />
+      <Tab.Screen name="Settings" component={Settings} />
+    </Tab.Navigator>
   )
 }
 
