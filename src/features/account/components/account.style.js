@@ -64,5 +64,12 @@ export const ErrorContainer = styled.View`
   align-items: flex-start;
   margin-top: ${(props) => props.theme.space[2]};
 `
+export const AnimationContainer = styled.View`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+`
 
 export default AccountBackground
