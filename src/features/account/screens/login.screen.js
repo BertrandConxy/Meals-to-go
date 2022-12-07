@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import AccountBackground, {
   AccountContainer,
   AuthButton,
   AuthInput,
 } from '../components/account.style'
 import { Spacer } from '../../../components/spacer/spacer.component'
+import { AuthenticationContext } from '../../../services/authentication/authentication.context'
 
 const LoginScreen = () => {
+  const { onLogin } = useContext(AuthenticationContext)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   return (
@@ -34,7 +36,7 @@ const LoginScreen = () => {
           icon="lock-open-outline"
           mode="contained"
           onPress={() => {
-            navigation.navigate('Login')
+            onLogin(email, password)
           }}
         >
           Login
