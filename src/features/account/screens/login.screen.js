@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react'
 import AccountBackground, {
   AccountContainer,
+  ErrorContainer,
   AuthButton,
   AuthInput,
-  ErrorContainer,
 } from '../components/account.style'
 import { Spacer } from '../../../components/spacer/spacer.component'
 import { Text } from '../../../components/typography/text.component'
