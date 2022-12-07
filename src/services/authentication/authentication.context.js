@@ -1,5 +1,5 @@
 import React, { useState, createContext } from 'react'
-import { login } from './authentication.service'
+import { login, register } from './authentication.service'
 
 export const AuthenticationContext = createContext()
 
@@ -30,6 +30,27 @@ export const AuthenticationContextProvider = ({ children }) => {
     }
   }
 
+  const onRegister = async (email, password, confirmPassword) => {
+    setIsLoading(true)
+    try {
+      const user = await register(email, password, confirmPassword)
+      setUser(user)
+      setIsLoading(false)
+      setIsAuthenticated(true)
+    } catch (error) {
+      setIsLoading(false)
+      if (error.code === 'auth/email-already-in-use') {
+        setError('Email already in use')
+      } else if (error.code === 'auth/invalid-email') {
+        setError('Invalid email')
+      } else if (error.code === 'auth/weak-password') {
+        setError('Weak password')
+      } else {
+        setError('Something went wrong')
+      }
+    }
+  }
+
   return (
     <AuthenticationContext.Provider
       value={{
@@ -38,6 +59,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         isLoading,
         error,
         onLogin,
+        onRegister,
       }}
     >
       {children}
