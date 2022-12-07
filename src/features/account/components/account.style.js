@@ -1,4 +1,5 @@
 import React from 'react'
+import { Text } from 'react-native'
 import { colors } from '../../../infrastructure/theme/colors'
 import styled from 'styled-components/native'
 import { Button, TextInput } from 'react-native-paper'
@@ -25,6 +26,7 @@ const AccountBackground = ({ children }) => {
   return (
     <ImageBg source={require('../../../../assets/home_bg.jpg')}>
       <Cover />
+      <Title>Meals To Go</Title>
       {children}
     </ImageBg>
   )
@@ -50,5 +52,11 @@ export const AuthInput = styled(TextInput).attrs({
   underlineColor: colors.brand.secondary,
   activeUnderlineColor: colors.brand.primary,
 })``
+
+export const Title = styled.Text`
+  font-size: 30px;
+  color: ${(props) => props.theme.colors.ui.primary};
+  font-weight: bold;
+`
 
 export default AccountBackground

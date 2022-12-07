@@ -3,8 +3,9 @@ import AccountBackground, {
   AccountContainer,
   AuthButton,
 } from '../components/account.style'
+import { Spacer } from '../../../components/spacer/spacer.component'
 
-const RegisterScreen = () => {
+const RegisterScreen = ({ navigation }) => {
   return (
     <AccountBackground>
       <AccountContainer>
@@ -18,6 +19,16 @@ const RegisterScreen = () => {
           Register
         </AuthButton>
       </AccountContainer>
+      <Spacer size="large" />
+      <AuthButton
+        icon="arrow-left-bold"
+        mode="contained"
+        onPress={() => {
+          navigation.goBack()
+        }}
+      >
+        Back
+      </AuthButton>
     </AccountBackground>
   )
 }
