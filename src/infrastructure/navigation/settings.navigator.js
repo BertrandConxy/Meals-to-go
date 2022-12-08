@@ -20,7 +20,11 @@ const SettingsNavigator = () => {
       <SettingStack.Screen name="Settings" component={SettingsScreen} />
 
       <SettingStack.Screen name="Favorites" component={FavoritesScreen} />
-      <SettingStack.Screen name="Camera" component={CameraScreen} />
+      <SettingStack.Screen
+        options={{ headerShown: false }}
+        name="Camera"
+        component={CameraScreen}
+      />
     </SettingStack.Navigator>
   )
 }
