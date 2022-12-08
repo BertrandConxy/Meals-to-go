@@ -15,7 +15,7 @@ const AccountScreen = ({ navigation }) => {
           key="animation"
           autoPlay
           loop
-          style={{ width: 400, height: 400 }}
+          style={{ width: 300, height: 300 }}
           resizeMode="cover"
           source={require('../../../../assets/watermelon.json')}
         />

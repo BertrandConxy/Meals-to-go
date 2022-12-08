@@ -1,5 +1,4 @@
 import React from 'react'
-import { Text } from 'react-native'
 import { colors } from '../../../infrastructure/theme/colors'
 import styled from 'styled-components/native'
 import { Button, TextInput } from 'react-native-paper'
@@ -65,11 +64,11 @@ export const ErrorContainer = styled.View`
   margin-top: ${(props) => props.theme.space[2]};
 `
 export const AnimationContainer = styled.View`
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  top: -50px;
+  align-items: center;
 `
 
 export default AccountBackground
