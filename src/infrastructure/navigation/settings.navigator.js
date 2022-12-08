@@ -5,6 +5,7 @@ import {
 } from '@react-navigation/native-stack'
 import SettingsScreen from '../../features/settings/screens/settings.screen'
 import FavoritesScreen from '../../features/settings/screens/favorites.screen'
+import CameraScreen from '../../features/account/screens/camera.screen'
 
 const SettingStack = createNativeStackNavigator()
 
@@ -19,6 +20,7 @@ const SettingsNavigator = () => {
       <SettingStack.Screen name="Settings" component={SettingsScreen} />
 
       <SettingStack.Screen name="Favorites" component={FavoritesScreen} />
+      <SettingStack.Screen name="Camera" component={CameraScreen} />
     </SettingStack.Navigator>
   )
 }
