@@ -40,8 +40,6 @@ This is a cross platform mobile app that features restaurants in a particular re
 
 ### Tech Stack <a name="tech-stack"></a>
 
-> Describe the tech stack and include only the relevant sections that apply to your project.
-
 <details>
   <summary>Client</summary>
   <ul>
