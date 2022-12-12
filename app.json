@@ -14,7 +14,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -22,6 +24,12 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon@2x.png",
         "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.conxybertrand.MealsToGo"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d708f0de-621a-4003-8013-1ead39792cb8"
       }
     }
   }
